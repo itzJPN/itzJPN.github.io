@@ -1,1 +1,283 @@
-<h1>Hiya! Moving my website here-- come back later!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ItzJPN's projects</title>
+  <style>
+    :root {
+      --primary: #007aff;
+      --primary-dark: #005fc1;
+      --bg: #fafafa;
+      --text: #111;
+      --muted: #555;
+      --card-bg: #ffffff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      --radius: 20px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(145deg, #f8f8f8, #ffffff);
+      padding: 3rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      animation: fadeDown 0.6s ease-out;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: var(--muted);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      animation: fadeUp 0.6s ease-out;
+    }
+    .project {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    }
+    .project h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.7rem;
+    }
+    .project p {
+      color: #444;
+      flex-grow: 1;
+      margin-bottom: 1.2rem;
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .buttonstab {
+      text-align: center;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .buttons button, .buttons a {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .buttons button {
+      background-color: var(--primary);
+      color: #fff;
+    }
+    .buttons button:hover {
+      background-color: var(--primary-dark);
+    }
+    .buttons a {
+      background-color: #e0e0e0;
+      color: var(--text);
+    }
+    .buttons a:hover {
+      background-color: #d5d5d5;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      width: 90%;
+      max-width: 600px;
+      transition: all 0.3s ease;
+    }
+    .popup.active {
+      display: block;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+    .overlay.active {
+      display: block;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #f0f0f0;
+      color: #777;
+      font-size: 0.95rem;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+.tag {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white; /* text color */
+  background-color: #007aff; /* change to any color */
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  line-height: 1.2;
+}
+.buttons a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ItzJPN</h1>
+    <i>NOTE: THIS ACCOUNT WAS MOVED FROM JBLUEBIRD. THIS IS THE NEW WEBSITE. I think all great apps should come free, without sparing quality and functionality. This is what I do.</i>
+	<!--<div class="buttons">
+       <a href="mailto:contactjbluebird@icloud.com">Contact Me</a>
+   </div>-->
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <h2 id="popup-title">Title</h2>
+    <p id="popup-desc">Description</p>
+    <div style="text-align:right;margin-top:1.5rem;">
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <section class="projects">
+    <div class="project">
+		<span class="tag" style="background-color:#f39c12;">SwiftUI</span>
+      <h2>Rocket</h2>
+      <p>A beautiful Launchpad replacement for macOS with folder support, layouts, custom filters, and more</p>
+      <div class="buttons">
+        <button onclick="openPopup('Rocket', 'A beautiful Launchpad replacement...')">More Info</button>
+        <a href="files/rocket.dmg" download><img src="assets/finder-black.png" alt="Black Finder Icon" width="20" height="20">
+ Download</a>
+      </div>
+    </div>
+    <div class="project">
+	   <span class="tag" style="background-color:#f39c12;">SwiftUI</span>
+      <h2>iCompress</h2>
+      <p>iCompress is a compression tool that allows you to send large files with iMessage</p>
+      <div class="buttons">
+        <button onclick="openPopup('iCompress', 'iCompress is a compression tool to compress large files (like long videos) and send them via iMessage easily. It is tested with very large files, and yet it sent through multiple standerd messaging programs. iCompress is cross platform, for both Android, Windows, and Mac. Simply compress your files and hit send. iCompress files can be opened and compressed on the web at jbluebirdie.neocities.org/icompress for cross platform. Don't take our word for it, simply try it out for yourself')">More Info</button>
+        <a href="files/icompress.dmg" download><img src="assets/finder-black.png" alt="Black Finder Icon" width="20" height="20"> Download</a>
+      </div>
+    </div>
+    <!--<div class="project">
+	   <span class="tag" style="background-color:#00008B;">Bash</span>
+      <div style="color: gray;"><h5>(Coming Soon)</h5></div>
+      <h2>CD Master</h2>
+      <p>The ultimate CD/DVD burning utility for power users. Burn files, audio, images, and more.</p>
+      <div class="buttons">
+        <button onclick="openPopup('CD Master', 'The ultimate CD/DVD utility...')">More Info</button>
+        <a href="cdmaster.dmg" download>Download</a>
+      </div>
+    </div>-->
+    <div class="project">
+	  <span class="tag" style="background-color:#00008B;">Bash</span>
+      <div style="color: gray;"><h5>(Coming Soon)</h5></div>
+      <h2>Strongbad Emails</h2>
+      <p>Send emails to Strongbad and get a funny reply from AI sent back to you!</p>
+      <div class="buttons">
+        <button onclick="openPopup('Send Emails to Strongbad!', 'Get ready for a whole lotta fun for the ENTIRE family! If you have every watched Homestar Runner, you will know about Strongbad and Homestar. Now, you can send REAL emails to them and get REAL replies back from AI! You can even send FOLLOW UP emails to Homestar and Strongbad to continue the conversation! The code and email server will release soon, stay tuned!')">What's coming?</button>
+        <!--<a href="cdmaster.dmg" download>Download</a>-->
+      </div>
+    </div>
+<div class="project">
+	  <span class="tag" style="background-color:#32CD32;">Scratch 3.0</span>
+      <h2>HASHBROWN</h2>
+      <p>HASHBROWN is a secure way of hiding passwords in Scratch projects for game codes and more. It uses the Birdie Hash method (designed for Scratch) backend.</p>
+      <div class="buttons">
+        <button onclick="openPopup('Hide YOUR beloved passwords in plain sight with Hashbrown', 'HASHBROWN is a secure way of hiding passwords in Scratch projects for game codes and more. It uses the Birdie Hash method (designed for Scratch) backend. It uses lists to store hashes and the allowed users to access the project. It comes with a custom value = hash block. ')">More info</button>
+        <button onclick='openPopup("Online Demo", `
+  <iframe src="https://scratch.mit.edu/projects/1187649991/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+`);'>Online Demo</button>
+      </div>
+    </div>
+<div class="project">
+	   <span class="tag" style="background-color:#f39c12;">SwiftUI</span>
+      <h2>iBlog</h2>
+      <p>iBlog makes RSS feeds easy to make and publish.</p>
+      <div class="buttons">
+        <button onclick="openPopup('RSS feeds made easy with iBlog', 'With import/export RSS feed features, great UI for making posts, iBlog is the complete all-in-one tools for creators to create, no free trial, entirly free, no corporate flunkies.')">More info</button>
+        <a href="files/iBlog.dmg" download><img src="assets/finder-black.png" alt="Black Finder Icon" width="20" height="20"> Download</a>
+      </div>
+    </div>
+<div class="project">
+	   <span class="tag" style="background-color:#f39c12;">SwiftUI</span>
+      <h2>iCopy</h2>
+      <p>Rip, manage, and play your music from you iPod with ease</p>
+      <div class="buttons">
+        <button onclick="openPopup('Rip, manage, and play your music from you iPod with ease', 'iCopy is an iPod manager application that enables you to effortlessly rip and manage your music from your iPod. Its features include playing music, ripping music to a folder, ripping all music to a folder, viewing photos, ripping photos to a folder, ripping voice memos, transcribing voice memos, and many more!')">More info</button>
+        <a href="files/iCopy.zip" download><img src="assets/finder-black.png" alt="Black Finder Icon" width="20" height="20"> Download</a>
+      </div>
+    </div>
+  </section>  
+  <footer>
+    <p>&copy; Birdie Works '25. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openPopup(title, desc) {
+      document.getElementById('popup-title').textContent = title;
+document.getElementById('popup-desc').innerHTML = desc;
+      document.getElementById('popup').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+    function closePopup() {
+      document.getElementById('popup').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
