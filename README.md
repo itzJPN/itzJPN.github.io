@@ -20,7 +20,19 @@ My personal website- stuff and files for my apps, and download links and bio for
   /byob (BYOB Browser Project)
 
   /IJAF (Files needed by my apps)
-    /installation
-    /media
-    /shutdowns
+    /installation (app installation files)
+      iBlog.dmg
+      iCompress.dmg
+      rocket.dmg
+    /media (media for my apps)
+      /fakedemo
+
+      /iScreen
+        /apple-tv-screensaver-json
+          tvos10.json (tvos 10 screensavers)
+          tvos11.json (tvos 11 screensavers)
+          tvos12.json (tvos 12 screensavers)
+          main-entries.json (tvos 16 screensavers)
+    /shutdowns (script shutdowns)
+      jvshutdown.txt
 ```
