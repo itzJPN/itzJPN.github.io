@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The ACU Club Turns One!</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      color: #000;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 80px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* --- Floating Confetti --- */
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: black;
+      opacity: 0.2;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    .confetti:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .confetti:nth-child(2) { left: 20%; animation-delay: 1s; }
+    .confetti:nth-child(3) { left: 40%; animation-delay: 2s; }
+    .confetti:nth-child(4) { left: 60%; animation-delay: 3s; }
+    .confetti:nth-child(5) { left: 80%; animation-delay: 4s; }
+    .confetti:nth-child(6) { left: 90%; animation-delay: 5s; }
+
+    /* --- Typewriter Heading --- */
+    h1 {
+      display: inline-block;
+      font-size: 2em;
+      margin-bottom: 20px;
+      border-right: 3px solid black;
+      white-space: pre-wrap; /* allows wrapping */
+      overflow: hidden;
+      animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+      max-width: 90vw; /* prevents overflow */
+    }
+
+    @keyframes typing {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* --- Paragraph Animation --- */
+    p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+      animation-delay: 4s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+        animation: typing 5s steps(50, end) forwards, blink 0.8s infinite;
+      }
+      p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Confetti Dots -->
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+
+  <h1>The ACU Club is now one year old!</h1>
+  <p>
+    Boy has it been a long time. A lot of people, a lot of meetups, a lot of pranks and mishaps. 
+    Every meetup our little club has grown and grown, but we need to go back in time to see where we came from. 
+    Four raggedy kids on a park day made what would become the ACU Club — I was one of the first founders. 
+    Thank you all so much for making the ACU Club what it is. 
+    Let’s celebrate one year with a bang!
+  </p>
+</body>
+</html>
