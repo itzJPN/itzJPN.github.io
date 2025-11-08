@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jsignature</title>
+<style>
+  body {
+    font-family: system-ui, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f7;
+    margin: 0;
+  }
+  .alert {
+    padding: 40px 60px;
+    border-radius: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .verified { background: #2ecc71; }
+  .fake { background: #e74c3c; }
+</style>
+</head>
+<body>
+<div id="alert" class="alert">Checking...</div>
+
+<script>
+/* ---- Embedded JSON array ---- */
+const EMBEDDED_JSON = `[
+  "A837H224Z",
+  "B12C34XYZ",
+  "JEN831WK0"
+]`;
+
+/* Parse */
+let CODES = [];
+try { CODES = JSON.parse(EMBEDDED_JSON); } catch { CODES = []; }
+
+/* Helpers */
+function getParam(name) { return new URLSearchParams(location.search).get(name); }
+
+/* Verify */
+const code = (getParam("code") || "").trim();
+const alertBox = document.getElementById("alert");
+
+if (!code) {
+  alertBox.textContent = "No code provided";
+  alertBox.className = "alert fake";
+} else if (CODES.includes(code)) {
+  alertBox.textContent = "Verified!";
+  alertBox.className = "alert verified";
+} else {
+  alertBox.textContent = "Fake!";
+  alertBox.className = "alert fake";
+}
+</script>
+</body>
+</html>
