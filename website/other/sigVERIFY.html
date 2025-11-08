@@ -1,64 +1,248 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Jsignature</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Signature Verification</title>
+
+<!-- Import a clean, modern font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-  body {
-    font-family: system-ui, Arial, sans-serif;
+  :root {
+    --bg: #fff;
+    --fg: #000;
+    --muted: #888;
+    --verified: #16a34a; /* green */
+    --fake: #dc2626; /* red */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Arial;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #f5f5f7;
-    margin: 0;
   }
-  .alert {
-    padding: 40px 60px;
-    border-radius: 12px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+  .card {
     text-align: center;
+    width: min(500px, 90vw);
   }
-  .verified { background: #2ecc71; }
-  .fake { background: #e74c3c; }
+
+  h1 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 26px;
+  }
+
+  .panel {
+    border: 2px solid var(--fg);
+    border-radius: 14px;
+    padding: 50px 25px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Suspense animation */
+  .verifying {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: .05em;
+    animation: fadeBlink 1.4s infinite;
+  }
+
+  @keyframes fadeBlink {
+    0%, 100% { opacity: 0.4; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.08) 50%, transparent 100%);
+    transform: skewX(-10deg);
+    animation: scan 1.3s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0% { left: -60%; opacity: 0; }
+    30% { opacity: 1; }
+    70% { left: 120%; opacity: 1; }
+    100% { left: 120%; opacity: 0; }
+  }
+
+  /* Result */
+  .result {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: .03em;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.7s cubic-bezier(.2,.9,.2,1), transform 0.7s cubic-bezier(.2,.9,.2,1);
+  }
+
+  .result.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .verified { color: var(--verified); }
+  .fake { color: var(--fake); }
+
+  /* Description */
+  .desc {
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .desc.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Manual entry */
+  .entry {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  input[type="text"] {
+    border: 1.6px solid var(--fg);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 220px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    outline: none;
+    transition: box-shadow .25s;
+  }
+
+  input[type="text"]:focus {
+    box-shadow: 0 0 0 3px rgba(0,0,0,.1);
+  }
+
+  button {
+    border: 1.6px solid var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  button:hover { transform: scale(1.05); }
+
+  .small {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
 </style>
 </head>
 <body>
-<div id="alert" class="alert">Checking...</div>
+  <div class="card">
+    <h1>Signature Verification</h1>
+
+    <div class="panel" id="panel">
+      <div class="scanline" id="scanline" hidden></div>
+      <div id="verifying" class="verifying">Checking…</div>
+      <div id="result" class="result"></div>
+      <div id="desc" class="desc"></div>
+    </div>
+
+    <div id="manual" style="display:none">
+      <div class="entry">
+        <input id="codeInput" type="text" placeholder="Enter code" />
+        <button id="verifyBtn">Verify</button>
+      </div>
+      <div class="small">Made by ItzJPN</div>
+    </div>
+  </div>
 
 <script>
-/* ---- Embedded JSON array ---- */
-const EMBEDDED_JSON = `[
-  "A837H224Z",
-  "B12C34XYZ",
-  "JEN831WK0"
-]`;
+/* === Editable Codes + Descriptions === */
+const CODES = {
+  "2:93842": "This is a digital signature that is on a document (s.93842)",
+  "1:83781": "This is a valid physical signature written by Josiah (s.83781)",
+  "JEN831WK0": "This is a valid legacy signature."
+};
 
-/* Parse */
-let CODES = [];
-try { CODES = JSON.parse(EMBEDDED_JSON); } catch { CODES = []; }
+/* === Elements === */
+const resultEl = document.getElementById('result');
+const verifyingEl = document.getElementById('verifying');
+const scanline = document.getElementById('scanline');
+const descEl = document.getElementById('desc');
+const manual = document.getElementById('manual');
+const input = document.getElementById('codeInput');
+const btn = document.getElementById('verifyBtn');
 
-/* Helpers */
-function getParam(name) { return new URLSearchParams(location.search).get(name); }
+/* === Helpers === */
+function getParam(name){ return new URLSearchParams(location.search).get(name); }
+function normalize(s){ return String(s||'').trim().toUpperCase(); }
 
-/* Verify */
-const code = (getParam("code") || "").trim();
-const alertBox = document.getElementById("alert");
+/* === Verification Routine === */
+function runVerification(code){
+  const c = normalize(code);
+  verifyingEl.textContent = "Verifying…";
+  scanline.hidden = false;
+  resultEl.classList.remove('show');
+  descEl.classList.remove('show');
+  resultEl.textContent = '';
+  descEl.textContent = '';
 
-if (!code) {
-  alertBox.textContent = "No code provided";
-  alertBox.className = "alert fake";
-} else if (CODES.includes(code)) {
-  alertBox.textContent = "Verified!";
-  alertBox.className = "alert verified";
-} else {
-  alertBox.textContent = "Fake!";
-  alertBox.className = "alert fake";
+  setTimeout(()=>{
+    scanline.hidden = true;
+    if (!c){
+      verifyingEl.textContent = "No code";
+      return;
+    }
+    if (CODES[c]){
+      verifyingEl.textContent = "";
+      resultEl.textContent = "VERIFIED";
+      resultEl.className = "result verified show";
+      descEl.textContent = CODES[c];
+      descEl.classList.add('show');
+    } else {
+      verifyingEl.textContent = "";
+      resultEl.textContent = "FAKE";
+      resultEl.className = "result fake show";
+    }
+  }, 1400 + Math.random() * 600);
 }
+
+/* === Logic === */
+const urlCode = normalize(getParam('code'));
+if (urlCode){
+  runVerification(urlCode);
+} else {
+  verifyingEl.textContent = "Enter a code";
+  scanline.hidden = true;
+  manual.style.display = "block";
+  input.focus();
+}
+
+btn.addEventListener("click", ()=> runVerification(input.value));
+input.addEventListener("keydown", e => { if (e.key === "Enter") runVerification(input.value); });
+input.addEventListener("input", ()=> input.value = input.value.toUpperCase());
 </script>
 </body>
 </html>
