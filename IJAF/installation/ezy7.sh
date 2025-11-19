@@ -40,18 +40,18 @@ Disk 1 = $DIR/BasiliskII/Disks/MacOS7.dsk
 Shared Folder = /Users/jnelson/BasiliskII/Shared
 EOL
 
-echo Downloading required files for BasiliskII from itzJPN.github.io/IJAF/installation/Ezy7/
+echo Downloading required files for BasiliskII from itzJPN.github.io/IJAF/installation/ezy7/
 
 #install MacOS 7
-curl -L https://itzJPN.github.io/IJAF/installation/Ezy7/MacOS7.dsk -o Disks/MacOS7.dsk
+curl -L https://itzJPN.github.io/IJAF/installation/ezy7/MacOS7.dsk -o Disks/MacOS7.dsk
 echo Downloaded MacOS 7.
 
 #place the rom
-curl -L https://itzJPN.github.io/IJAF/installation/Ezy7/MacIIci.ROM -o ROMS/MacIIci.ROM
+curl -L https://itzJPN.github.io/IJAF/installation/ezy7/MacIIci.ROM -o ROMS/MacIIci.ROM
 echo Placed rom... if you need more roms please visit https://github.com/itzJPN/itzJPN.github.io/tree/main/IJAF/installation/ezy7 to download more.
 
 #finally, install BasiliskII
-curl -L https://itzJPN.github.io/IJAF/installation/Ezy7/BasiliskII.zip -o BasiliskII.zip
+curl -L https://itzJPN.github.io/IJAF/installation/ezy7/BasiliskII.zip -o BasiliskII.zip
 unzip BasiliskII.zip
 
 echo BasiliskII, MacOS 7, the config file, and your rom is installed!
