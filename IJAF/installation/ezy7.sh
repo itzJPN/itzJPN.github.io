@@ -72,7 +72,7 @@ sleep 3
 echo Opening your new VM!
 
 ./BasiliskII.app/Contents/MacOS/BasiliskII \
-  --rom /Users/jnelson/BasiliskII/ROMS/MacIIci.ROM \
-  --disk /Users/jnelson/BasiliskII/Disks/MacOS7.dsk \
+  --rom $DIR/BasiliskII/ROMS/MacIIci.ROM \
+  --disk $DIR/jnelson/BasiliskII/Disks/MacOS7.dsk \
   --ramsize 67108864 \
   --fpu true
