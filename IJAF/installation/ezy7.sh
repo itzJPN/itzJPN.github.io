@@ -37,7 +37,7 @@ Screen width = 1024
 Screen height = 768
 Disk 0 = $DIR/BasiliskII/Disks/MacHD.dsk
 Disk 1 = $DIR/BasiliskII/Disks/MacOS7.dsk
-Shared Folder = /Users/jnelson/BasiliskII/Shared
+Shared Folder = $DIR/BasiliskII/Shared
 EOL
 
 echo Downloading required files for BasiliskII from itzJPN.github.io/IJAF/installation/ezy7/
