@@ -1,5 +1,7 @@
 ID=0
 PASS=helloworld
+NAME=Josiah
 
 ID=1
 PASS=test
+NAME=Judah
