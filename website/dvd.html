@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JPN’s giveaway</title>
+
+  <!-- Modern, pleasant font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f9fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0f172a;
+      --open:#10b981;
+      --taken:#ef4444;
+      --accent-2:#2563eb;
+      --radius:12px;
+      --glass: rgba(15,23,42,0.04);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg, var(--bg), #ffffff);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      max-width:900px;
+      margin:48px auto;
+      padding:24px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:20px;
+    }
+
+    .logo {
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 20px rgba(16,24,40,0.08);
+    }
+
+    h1{
+      margin:0;
+      font-size:28px;
+      line-height:1.05;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:14px;
+    }
+
+    .notice{
+      background:var(--glass);
+      border-radius:10px;
+      padding:14px;
+      margin:18px 0;
+      font-size:15px;
+      color:var(--accent-2);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .notice strong{color:var(--accent);}
+
+    .games {
+      display:grid;
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+      border:1px solid rgba(15,23,42,0.03);
+    }
+
+    .card h3{
+      margin:0 0 6px 0;
+      font-size:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+
+    .meta {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    blockquote{
+      margin:12px 0 10px 0;
+      padding-left:12px;
+      border-left:4px solid rgba(37,99,235,0.12);
+      color:var(--muted);
+      font-style:normal;
+      line-height:1.45;
+      background:linear-gradient(180deg, rgba(37,99,235,0.02), transparent);
+      padding:12px 12px 12px 16px;
+      border-radius:8px;
+    }
+
+    .availability{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:600;
+      font-size:13px;
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .open { background:rgba(16,185,129,0.12); color:var(--open); border:1px solid rgba(16,185,129,0.12); }
+    .taken{ background:rgba(239,68,68,0.08); color:var(--taken); border:1px solid rgba(239,68,68,0.06); }
+
+    .small {
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    footer {
+      margin-top:22px;
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:520px){
+      .wrap{ padding:18px; margin:22px 12px; }
+      header{ gap:12px; }
+      h1{ font-size:22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Josiah's DVD giveaway!</h1>
+        <div class="subtitle">Giving away DVD games! Text the ACU club to claim yours, then DM your address to Josiah for shipping.</div>
+      </div>
+    </header>
+
+    <div class="notice">
+      <div style="font-size:20px;">📦</div>
+      <div>
+        <div><strong>Please get parent approval</strong> for any games you want — make sure a parent/guardian is okay with the game before claiming it.</div>
+      </div>
+    </div>
+
+    <section class="games">
+      <article class="card">
+        <h3>
+          <span>Who wants to be a millionaire</span>
+          <span class="availability taken">Taken</span>
+        </h3>
+        <blockquote>
+          This charming game features a host who asks you questions. Get the question right, earn some pounds. Get one wrong, game over.
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Taken</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>Scene it!</span>
+          <span class="availability taken">Taken</span>
+        </h3>
+        <blockquote>
+          Scene it! is an interactive film series created by Screenlife Games, in which players answer trivia questions about films or pop culture. The games were first developed to be played with questions read from trivia cards or viewed on a television from an included DVD or based on clips from movies, TV shows, music videos, sports and other popular culture phenomena.
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Taken</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>Party Bingo</span>
+          <span class="availability open">Open</span>
+        </h3>
+        <blockquote>
+          Enjoy a classic game of bingo with the entire family. <strong>Requires board to play properly.</strong>
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Open</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>Bullseye</span>
+          <span class="availability open">Open</span>
+        </h3>
+        <blockquote>
+          Practice your aim with a fun game of bullseye — just aim, shoot, and see your score! It’s that simple.
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Open</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>DVD Ball</span>
+          <span class="availability open">Open</span>
+        </h3>
+        <blockquote>
+          Ask questions and then trigger the DVD ball, and he’ll respond with a funny answer! There are multiple advice balls for different questions, so pick the one relevant. <strong>Please don’t follow any of the answers it gives you. This game is for entertainment purposes ONLY.</strong>
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Open</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>Catchphrase</span>
+          <span class="availability open">Open</span>
+        </h3>
+        <blockquote>
+          Play Catchphrase on your TV with this family game based on the classic TV show. "Say what you see!" This special Catchphrase presentation pack features the interactive DVD game, bursting with Catchphrase clues for you to puzzle over.
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Open</strong></div>
+      </article>
+
+      <article class="card">
+        <h3>
+          <span>The Price is Right</span>
+          <span class="availability open">Open</span>
+        </h3>
+        <blockquote>
+          Come on Down and take your place on Contestants Row! With two different games and up to four players, this hilarious interactive DVD game allows the whole family to play the nation's most popular TV gameshow with Joe Pasquale - at home!
+        </blockquote>
+        <div class="small meta">Availability: <strong style="margin-left:6px; color:var(--muted)">Open</strong></div>
+      </article>
+    </section>
+
+    <footer>
+      <div>To claim: text the ACU club, then DM your address to <strong>Josiah</strong>. — Good luck and have fun!</div>
+    </footer>
+  </div>
+</body>
+</html>
