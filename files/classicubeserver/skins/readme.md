@@ -1,2 +1,2 @@
 # Skins
-This file contains the server skins.
+This folder contains the server skins.
