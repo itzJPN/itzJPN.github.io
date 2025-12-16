@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting…</title>
+
+  <script>
+    // Map short names to destination URLs
+    const redirects = {
+      icopy: "https://jbluebird.github.io/iCopy",
+      // add more here
+    };
+
+    // Read ?redir=...
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("redir");
+
+    // Redirect if found, otherwise go to homepage
+    if (key && redirects[key]) {
+      window.location.replace(redirects[key]);
+    } else {
+      window.location.replace("https://itzjpn.github.io");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
