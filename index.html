@@ -208,6 +208,12 @@
     It appears you have clicked a broken link, which led to the homepage!
   </p>
 </div>
+	<div class="alert" id="ios-webserver">
+  <h3>Yo!</h3>
+  <p>
+    You <i>actually</i> checked out the dev who made that wonderful webserver? Well thanks! I have some of my other projects below, hope you like them!
+  </p>
+</div>
 
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="popup">
@@ -337,6 +343,12 @@ document.getElementById('popup-desc').innerHTML = desc;
   const params = new URLSearchParams(window.location.search);
   if (params.get("rf") === "redirNotFound") {
     document.getElementById("redir-alert").style.display = "block";
+  }
+</script>
+	<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("rf") === "ioswebserver") {
+    document.getElementById("ios-webserver").style.display = "block";
   }
 </script>
 </body>
