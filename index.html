@@ -202,18 +202,11 @@
        <a href="mailto:contactjbluebird@icloud.com">Contact Me</a>
    </div>-->
   </header>
-<div class="alert" id="redir-alert">
-  <h3>Hey, whoops!</h3>
-  <p>
-    It appears you have clicked a broken link, which led to the homepage!
-  </p>
+<div class="alert" id="rf-alert">
+  <h3 id="rf-alert-title"></h3>
+  <p id="rf-alert-message"></p>
 </div>
-	<div class="alert" id="ios-webserver">
-  <h3>Yo!</h3>
-  <p>
-    You <i>actually</i> checked out the dev who made that wonderful webserver? Well thanks! I have some of my other projects below, hope you like them!
-  </p>
-</div>
+
 
   <div class="overlay" id="overlay"></div>
   <div class="popup" id="popup">
@@ -340,15 +333,28 @@ document.getElementById('popup-desc').innerHTML = desc;
     }
   </script>
 	<script>
+  const rfMessages = {
+    redirNotFound: {
+      title: "Hey, whoops!",
+      message: "It appears you have clicked a broken link, which led to the homepage!"
+    },
+    ioswebserver: {
+      title: "Yo!",
+      message: "You <i>actually</i> checked out the dev who made that wonderful webserver? Well thanks! I have some of my other projects below, hope you like them!"
+    },
+    comingSoon: {
+      title: "Coming soon!",
+      message: "This page isn’t ready yet — but you’re early 👀"
+    }
+  };
+
   const params = new URLSearchParams(window.location.search);
-  if (params.get("rf") === "redirNotFound") {
-    document.getElementById("redir-alert").style.display = "block";
-  }
-</script>
-	<script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("rf") === "ioswebserver") {
-    document.getElementById("ios-webserver").style.display = "block";
+  const rf = params.get("rf");
+
+  if (rf && rfMessages[rf]) {
+    document.getElementById("rf-alert-title").innerHTML = rfMessages[rf].title;
+    document.getElementById("rf-alert-message").innerHTML = rfMessages[rf].message;
+    document.getElementById("rf-alert").style.display = "block";
   }
 </script>
 </body>
