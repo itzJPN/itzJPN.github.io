@@ -1,5 +1,8 @@
-# My Website 
-My personal website- stuff and files for my apps, and download links and bio for you. See the **sitemap** to view all the directories and see what they are used for.
+# itzjpn.github.io
+My personal website- stuff and files for my apps, and download links and bio for you.
+
+- **Main Site:** [Go to main site](https://itzjpn.github.io)
+- **Newsroom:** [See the latest news](https://itzjpn.github.io/newsroom.html)
 
 > **Website Moved!!**
 > 
