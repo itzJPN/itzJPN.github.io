@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News Article</title>
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #111;
+      --muted: #555;
+      --primary: #007aff;
+      --card: #ffffff;
+      --shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .toolbar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .toolbar button:hover {
+      background: #005fc1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .markdown h1,
+    .markdown h2,
+    .markdown h3 {
+      margin-top: 1.5rem;
+    }
+
+    .markdown p {
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button onclick="goBack()">← Return to Newsroom</button>
+    <div>ItzJPN News</div>
+  </div>
+
+  <!-- Article -->
+  <div class="container">
+    
+    <!-- Customizable image -->
+    <img class="hero" src="YOUR_IMAGE_PATH_HERE.jpg" alt="Article Image"/>
+
+    <div class="content">
+      <div class="title">Hello Article</div>
+      <div class="meta">By ItzJPN • Today</div>
+
+      <!-- Markdown output -->
+      <div class="markdown" id="article"></div>
+    </div>
+  </div>
+
+  <!-- Markdown content -->
+  <script id="markdown-content" type="text/plain">
+**This is a test**
+    > Blockquote
+    ``js
+    codeee
+    ``
+  </script>
+
+  <script>
+    function goBack() {
+      window.location.href = "newsroom.html";
+    }
+
+    const rawMarkdown = document.getElementById("markdown-content").textContent;
+    document.getElementById("article").innerHTML = marked.parse(rawMarkdown);
+  </script>
+
+</body>
+</html>
