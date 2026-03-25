@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Article</title>
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #111;
+      --muted: #555;
+      --primary: #007aff;
+      --card: #ffffff;
+      --shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .toolbar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .toolbar button:hover {
+      background: #005fc1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .markdown h1,
+    .markdown h2,
+    .markdown h3 {
+      margin-top: 1.5rem;
+    }
+
+    .markdown p {
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button onclick="goBack()">← Return to Newsroom</button>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <!-- Article -->
+  <div class="container">
+    
+    <!-- Customizable image -->
+    <img class="hero" src="img/IMG_0664.jpeg" alt="Article Image"/>
+
+    <div class="content">
+      <div class="title">Gain access to an old Mac that you don't know the password to.</div>
+      <div class="meta">By ItzJPN • March 25, 2026</div>
+
+      <!-- Markdown output -->
+      <div class="markdown" id="article"></div>
+    </div>
+  </div>
+
+  <!-- Markdown content -->
+<script id="markdown-content" type="text/plain">
+> **Disclaimer**
+> Please only proform this on devices you own. In no way should this guide be used by stolen devices. Thank you.
+
+**Introduction to DarkSword**
+
+DarkSword is an iOS 18 zero-click web exploit that was made by potentially Russian hackers. I know. Out of a spy movie. Well, not really! As Russia is ongoing a war with Ukraine, they seem to want to target Ukrainian iPhones. As the malware was investigated, it is found that it only launches the attack on IP addresses that come from Ukraine, and with the early code comments being in Russian, it’s clear that Russia is to blame for this malware.
+
+However, it has been extracted from a suspicious website and leaked on GitHub, which I will not link here because a massive amount of devices are still running iOS 18. It’s can be very easy for a malicious actor to deploy it on their website.
+
+This has also opened the road to new iOS jailbreaks for iOS 18, as this exploit provides kernel R/W access. This allowed jailbreaks such as Dopamine to upgrade it’s attack surface to later iOS versions.
+
+**How to prevent your self from being attacked**
+
+It’s a good common practice to:
+- Always keep your iOS version updated
+- If your phone does not support the latest iOS, try to save an buy a new iPhone.
+- Avoid suspicious websites. Traits include using social engineering to get you to download an app onto your iPhone and having weird domain names
+
+> **Note**
+> The original attack only launches when it finds a phone with a Ukrainian IP address, however, because it has been leaked on GitHub, people can easily change and deploy their own versions of the exploit that target other countries too.
+
+**So that’s all for today**
+	
+Hope you enjoyed the article. On the other hand, if you want to learn more, simply see other people’s articles on DarkSword and you’ll find a lot of knowledge my brain probably has never even thought of before.
+
+Thanks for reading.
+	- ItzJPN
+</script>
+
+  <script>
+    function goBack() {
+      window.location.href = "https://itzjpn.github.io/newsroom.html";
+    }
+
+    const rawMarkdown = document.getElementById("markdown-content").textContent;
+    document.getElementById("article").innerHTML = marked.parse(rawMarkdown);
+  </script>
+	<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
