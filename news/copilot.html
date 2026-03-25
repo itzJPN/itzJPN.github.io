@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ItzJPN - Microsoft says it will reduce Copilot AI integrations in some apps, starting with Photos, Widgets, Notepad, and its Snipping Tool.</title>
+
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #111;
+      --muted: #555;
+      --primary: #007aff;
+      --card: #ffffff;
+      --shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .toolbar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .toolbar button:hover {
+      background: #005fc1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .markdown h1,
+    .markdown h2,
+    .markdown h3 {
+      margin-top: 1.5rem;
+    }
+
+    .markdown p {
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button onclick="goBack()">← Return to Newsroom</button>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <!-- Article -->
+  <div class="container">
+    
+    <!-- Customizable image -->
+    <img class="hero" src="img/copilot.png" alt="Article Image"/>
+
+    <div class="content">
+      <div class="title">Recover your old Mac documents without a password</div>
+      <div class="meta">By ItzJPN • March 25, 2026</div>
+
+      <!-- Markdown output -->
+      <div class="markdown" id="article"></div>
+    </div>
+  </div>
+
+  <!-- Markdown content -->
+<script id="markdown-content" type="text/plain">
+**Image Source:** Microsoft
+
+The thing that stops me from either buying a PC or even using Windows on an old Mac is that Microsoft has been filling Windows 11 to the brim with AI features and Copilot. This choice has experienced severe internet backlash and has lead to a change in the company that will hopefully lead to a better Windows. Is it actually what Microsoft says it’s going to be?
+
+**The Issue**
+Microsoft began adding Copilot (formerly Bing Chat) to its apps and services in early 2023, with a rapid expansion across the Microsoft 365 ecosystem throughout late 2023 and 2024. 
+
+- Early 2023: Introduced as "Bing Chat" and "Dynamics 365 Copilot" in February and March respectively.
+- Late 2023 (Sept/Nov): Rebranded all chatbot variants (Windows Copilot, Bing Chat, M365 Copilot) to "Microsoft Copilot".
+- 2024/2025: Integrated into more apps, including Paint, Photos, and Clipchamp in Windows 11, with plans to make the dedicated app a default installation by October 2025.
+- October 2025: The copilot app is added preinstalled to Windows 11 systems
+- Jan 15, 2025: The "Microsoft 365" app began rebranding to "Microsoft 365 Copilot" to unify the experience
+
+**The Backlash**
+
+- Early/Late 2023: When everything became “Copilot” in late 2023, people got frustrated because too many products had the same name (Windows, Bing, Office, etc.), It wasn’t clear what each version actually *did*, so users joked it was impossible to tell them apart
+- 2024/2025: Users didn’t want AI in basic apps like Paint, it felt unnecessary and intrusive. Also, on the other hand, Windows users complained big time that that extra unnecessary integration has made their systems heavier. Most users could not find ways to uninstall it, which lead to the classic “Let Me Choose” backlash.
+- October 2025: Users dislike preinstalled tools they didn’t ask for. By this point, many users were tired of AI being everywhere. “Not everything needs AI” became a common sentiment. Always-available AI made users suspicious about data collection, especially tied to OS-level access.
+- Jan 15, 2025: Microsoft 365 was getting more expensive from forced added AI features, which lead to some users saying they were feeling like they were being upsold. Also, people asked: “Is this actually new or just renamed?” leading to some smaller confusion. In the workplace setting, employees didn’t always want AI in their workflow. There were big concerns about accuracy in documents, emails, and spreadsheets.
+
+**Micro*slop*’s solution**
+
+Silently cut down AI in Windows 11 due to the Microslop criticism on platforms like Reddit, X (formerly Twitter). Microsoft’s solution can be summed up as:
+
+- Reduce friction
+  - Less forced AI
+  - Less clutter
+- Increase control
+  - Toggles
+  - Admin settings
+- Limit scope
+  - Not every app needs AI
+  - Not always running
+
+I’m still waiting to see how the internet feels on this subject, but at least it’s something Microsoft is paying attention to. Well, they kinda have to, right? Like why lose 50B dollars on AI & Copilot when you can *attempt* to draw it back and *attempt* to make users actually happy. 
+
+I say attempt strongly.
+
+**So that’s all for now**
+
+Thanks for reading, and [follow me on X](https://x.com/ItzDaRealJPN) for tips, tricks, and new useful articles as they come out.
+</script>
+
+  <script>
+    function goBack() {
+      window.location.href = "https://itzjpn.github.io/newsroom.html";
+    }
+
+    const rawMarkdown = document.getElementById("markdown-content").textContent;
+    document.getElementById("article").innerHTML = marked.parse(rawMarkdown);
+  </script>
+	<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
